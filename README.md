@@ -2,19 +2,6 @@
   <img width="500" alt="logo_trashify (1)" src="https://github.com/pbl-persero-batam/pbl-manrisk-perserobatam/assets/92602362/6a2dd02f-fb0d-4921-b74d-8f1daf63beca">
 </p>
 
-# Project Proponent : Cahya Miranto 
-# Project Manager   : Swono Sibagariang
-# Teams
-1. 3312201038 - Nabilah
-2. 3312201049 - Yudha Batara
-3. 3312211047 - Gabriel Ronaldo Tarigan
-4. 3312201111 - Thaslim Khairul Padjri
-5. 3312201067 - M Abdillah
-6. 6042302014 - Rio Adjie Wiguna
-7. 6042302024 - Anindya Hudaa Kumala Tantri
-8. 6042302017 - Adinda Thalia Putri Salsabila
-<br><br>
-
 #  💻 About Risk Management and Compliance Application for Persero Batam
 
 <p align="center"> 
