@@ -60,12 +60,22 @@
 
                 <!-- Statistik -->
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-lg-6 col-md-12">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
                                     <h4 class="card-title">Statistik Audit</h4>
                                     <canvas id="auditChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <h4 class="card-title">Distribusi Keseluruhan</h4>
+                                    <canvas id="auditPieChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -77,36 +87,44 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var ctx = document.getElementById("auditChart").getContext("2d");
+            var auditData = {
+                auditCount: {{ App\Models\Audit::count() }},
+                terbuka: {{ App\Models\Recomended::where('status', 1)->count() }},
+                progres: {{ App\Models\Recomended::where('status', 2)->count() }},
+                selesai: {{ App\Models\Recomended::where('status', 3)->count() }}
+            };
 
-            var auditChart = new Chart(ctx, {
+            var ctxBar = document.getElementById("auditChart").getContext("2d");
+            var ctxPie = document.getElementById("auditPieChart").getContext("2d");
+
+            new Chart(ctxBar, {
                 type: "bar",
                 data: {
                     labels: ["Total Data"],
                     datasets: [{
                             label: "Laporan Audit",
-                            data: [{{ App\Models\Audit::count() }}],
+                            data: [auditData.auditCount],
                             backgroundColor: "#3498db",
                             borderColor: "#2980b9",
                             borderWidth: 1
                         },
                         {
                             label: "Terbuka",
-                            data: [{{ App\Models\Recomended::where('status', 1)->count() }}],
+                            data: [auditData.terbuka],
                             backgroundColor: "#2ecc71",
                             borderColor: "#27ae60",
                             borderWidth: 1
                         },
                         {
                             label: "Progres",
-                            data: [{{ App\Models\Recomended::where('status', 2)->count() }}],
+                            data: [auditData.progres],
                             backgroundColor: "#f1c40f",
                             borderColor: "#f39c12",
                             borderWidth: 1
                         },
                         {
                             label: "Selesai",
-                            data: [{{ App\Models\Recomended::where('status', 3)->count() }}],
+                            data: [auditData.selesai],
                             backgroundColor: "#e74c3c",
                             borderColor: "#c0392b",
                             borderWidth: 1
@@ -118,15 +136,32 @@
                     plugins: {
                         legend: {
                             display: true,
-                            position: "top",
-                            labels: {
-                                color: "#000"
-                            }
+                            position: "top"
                         }
                     },
                     scales: {
                         y: {
                             beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            new Chart(ctxPie, {
+                type: "pie",
+                data: {
+                    labels: ["Terbuka", "Progres", "Selesai"],
+                    datasets: [{
+                        data: [auditData.terbuka, auditData.progres, auditData.selesai],
+                        backgroundColor: ["#2ecc71", "#f1c40f", "#e74c3c"]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: "top"
                         }
                     }
                 }

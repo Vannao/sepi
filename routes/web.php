@@ -47,8 +47,8 @@ Route::middleware(['auth'])->group(function () {
         return view('Super-Admin.tambah-pengguna');
     });
     Route::get('/manage-pengguna', [AuthController::class, 'tampilPengguna']);
-
-
+    Route::get('/halaman-update-pengguna/{id_user}', [AuthController::class, 'halamanUpdatePengguna'])->name('halamanUpdatePengguna');
+    Route::put('/update-pengguna/{id_user}', [AuthController::class, 'updatePengguna'])->name('updatePengguna');
 
     Route::post('/register-as-admin', [AuthController::class, 'registerAsAdmin']);
     Route::prefix('audit')->name('audit.')->group(function () {

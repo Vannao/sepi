@@ -20,9 +20,10 @@
                 <ul class="nav navbar-nav float-right">
 
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
-                            href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img
-                                    src="{{ asset('Robust-responsive-bootstrap-4-admin-template-build-system/app-assets/images/portrait/small/avatar-s-1.png') }}"
-                                    alt="avatar"><i></i></span><span class="user-name">{{ Auth::user()->name }} -
+                            href="#" data-toggle="dropdown"><span class="avatar avatar-online">
+                                <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim(Auth::user()->email))) }}?d=mp"
+                                    alt="avatar">
+                                <i></i></span><span class="user-name">{{ Auth::user()->name }} -
                                 {{ Auth::user()->role }}</span></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Edit

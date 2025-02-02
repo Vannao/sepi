@@ -140,12 +140,6 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="card-footer border-0">
-                                    <p class="card-subtitle text-muted text-center mx-2 my-1">
-                                        <span class="font-small-5">Don't have an account? <a href="/register">Sign
-                                                up</a></span>
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     </div>

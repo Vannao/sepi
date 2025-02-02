@@ -2,7 +2,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li><a class="menu-item" href="{{ route('dashboard') }}"><i class="fa fa-users"></i>
+                <li><a class="menu-item" href="{{ route('dashboard') }}"><i class="fa fa-home"></i>
                         Dashboard</a></li>
                 <li><a class="menu-item" href="/manage-pengguna"><i class="fa fa-users"></i>
                         Manage Pengguna</a></li>

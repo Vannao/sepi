@@ -91,4 +91,34 @@ class AuthController extends Controller
 
         return view('Super-Admin.manage-pengguna', ['pengguna' => $pengguna]);
     }
+
+    public function halamanUpdatePengguna($id_user)
+    {
+        $pengguna = User::findOrFail($id_user);
+
+        return view('Super-Admin.update-pengguna', ['pengguna' => $pengguna]);
+    }
+
+    public function updatePengguna(Request $request, $id_user)
+    {
+        $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|string|max:255',
+            'password' => 'nullable|min:6',
+        ]);
+
+        $pengguna = User::findOrFail($id_user);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $pengguna->update($data);
+
+        return redirect('/manage-pengguna')->with('success', 'Akun Pengguna Berhasil Diperbarui');
+    }
 }
