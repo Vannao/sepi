@@ -5,6 +5,14 @@
     @include('Template.head')
     <title>SPI Navigator - Laporan Hasil Audit</title>
 </head>
+<style>
+    .table td,
+    .table th {
+        word-wrap: break-word;
+        white-space: normal;
+        max-width: 200px;
+    }
+</style>
 
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click"
     data-menu="vertical-menu" data-col="2-columns">

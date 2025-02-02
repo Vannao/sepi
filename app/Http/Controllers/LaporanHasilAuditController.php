@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class LaporanHasilAuditController extends Controller
 {
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Display a listing of the resource.

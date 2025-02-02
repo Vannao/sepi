@@ -23,6 +23,12 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+// Untuk debug by acong
+Route::get('/test', function () {
+    return view('test');
+});
+
 // Login & Register
 Route::view('/login', 'Auth/login')->name('login');
 Route::view('/register', 'Auth/register')->name('register');
@@ -37,7 +43,14 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::view('/dashboard', 'Dashboard/dashboard')->name('dashboard');
+    Route::get('/tambah-pengguna', function () {
+        return view('Super-Admin.tambah-pengguna');
+    });
+    Route::get('/manage-pengguna', [AuthController::class, 'tampilPengguna']);
 
+
+
+    Route::post('/register-as-admin', [AuthController::class, 'registerAsAdmin']);
     Route::prefix('audit')->name('audit.')->group(function () {
         Route::get('laporan-hasil-audit', [LaporanHasilAuditController::class, 'index'])->name('index');
         Route::get('laporan-hasil-audit/{id}/show', [LaporanHasilAuditController::class, 'show'])->name('show');

@@ -36,6 +36,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'role' =>  'required|string',
             'terms' => 'required'
         ], [
             'terms.required' => 'You must agree to the terms and conditions.'
@@ -45,6 +46,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->role = $request->role;
         $user->save();
 
         Auth::login($user);
@@ -52,11 +54,41 @@ class AuthController extends Controller
         return redirect()->intended('login');
     }
 
+
+
+
+    public function registerAsAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'role' =>  'required|string',
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save();
+
+
+        return redirect()->back()->with('success', 'Akun berhasil di daftarkan!');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
         return redirect('/');
     }
+
+
+    public function tampilPengguna()
+    {
+
+        $pengguna = User::paginate(5);
+
+        return view('Super-Admin.manage-pengguna', ['pengguna' => $pengguna]);
+    }
 }
-
-

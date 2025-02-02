@@ -9,6 +9,13 @@
             display: none;
             margin-top: 20px;
         }
+
+        .table td,
+        .table th {
+            word-wrap: break-word;
+            white-space: normal;
+            max-width: 200px;
+        }
     </style>
 </head>
 
